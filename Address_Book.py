@@ -29,16 +29,74 @@ class Person():
 
 
 
-person01 = Person()
-person01.name_entry()
-person01.address_entry()
-person01.cell_phone_entry()
-person01.business_phone_entry()
-person01.email_entry()
-print(person01.name_entry + "\n")
-print(person01.address_entry + "\n")
-print(person01.cell_phone_entry + "\n")
-print(person01.business_phone_entry + "\n")
-print(person01.email_entry + "\n")
+
+def new_entry():
+	print("\n You selected create an entry")
+
+'''
+develop the menu
+Menu options:
+Create a new entry menu: 
+1.this will pull up all entry options
+2.update an entry's information: ****this will need to open up a new menu with all the entries as options
+'''
+
+def edit_info():
+	print("\n You selected edit an entry")
+
+'''
+Update person's info menu:
+1. name
+2. address
+3. cell phone
+4. business phone
+5. email
+'''
+
+def view_person():
+	print("\n You selected View an entry")
+
+'''
+View person's info menu:
+1. enter name to see all their info
+2. give option to edit their info from here
+'''
 
 
+# 
+
+def main():
+	print("Address Book")
+	print("\n")
+	print("Please select an option from the following menu\n")
+	print("--------------------")
+	print("1. Create a new entry")
+	print("2. Edit an existing entry")
+	print("3. View an entry")
+	print("--------------------\n")
+	selection = int(input(">> "))
+	if selection == 1:
+		new_entry()
+	elif selection == 2:
+		edit_info()
+	elif selection == 3:
+		view_person()
+	else:
+		print("You've selected an incorrect option")
+		main()
+
+if __name__=="__main__":
+	main()
+
+#initial debugging 
+# person01 = Person()
+# person01.name_entry()
+# person01.address_entry()
+# person01.cell_phone_entry()
+# person01.business_phone_entry()
+# person01.email_entry()
+# print(person01.name_entry + "\n")
+# print(person01.address_entry + "\n")
+# print(person01.cell_phone_entry + "\n")
+# print(person01.business_phone_entry + "\n")
+# print(person01.email_entry + "\n")
