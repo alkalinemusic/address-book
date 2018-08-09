@@ -69,36 +69,44 @@ View person's info menu:
 2. give option to edit their info from here
 '''
 
+def quit_program():
+	pass
 
 # 
 
 def main():
 	list_options = [1, 2, 3]
 	selection = 0
-	clear()
-	print("Address Book")
-	print("\n")
-	print("Please select an option from the following menu\n")
-	print("--------------------")
-	print("1. Create a new entry")
-	print("2. Edit an existing entry")
-	print("3. View an entry")
-	print("--------------------\n")
-	selection = input(">> ")
+	while True:
+		try:
+			clear()
+			print("Address Book")
+			print("\n")
+			print("Please select an option from the following menu\n")
+			print("--------------------")
+			print("1. Create a new entry")
+			print("2. Edit an existing entry")
+			print("3. View an entry")
+			print("4. Quit program")
+			print("--------------------\n")
+			selection = int(input(">> "))
+			print("selection is {}".format(selection))
 
-	while not selection.isdigit():
-		main()
-	if int(selection) in list_options:
-		if int(selection) == 1:
-			new_entry()
-		elif int(selection) == 2:
-			edit_info()
-		elif int(selection) == 3:
-			view_person()
-	else:
-		clear()
-		print("You've selected an incorrect option\n")
-		main()
+		except ValueError:
+			clear()
+			print("You've selected an incorrect option\n")
+			continue
+		else:
+			break
+		if int(selection) in list_options:
+			if int(selection) == 1:
+				new_entry()
+			elif int(selection) == 2:
+				edit_info()
+			elif int(selection) == 3:
+				view_person()
+
+			# main()
 
 
 if __name__=="__main__":
