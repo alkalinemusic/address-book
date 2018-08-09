@@ -70,12 +70,13 @@ View person's info menu:
 '''
 
 def quit_program():
-	pass
+	print("you chose to exit")  # Debug line
+	exit()
 
 # 
 
 def main():
-	list_options = [1, 2, 3]
+	list_options = [1, 2, 3, 4]
 	selection = 0
 	while True:
 		try:
@@ -90,23 +91,27 @@ def main():
 			print("4. Quit program")
 			print("--------------------\n")
 			selection = int(input(">> "))
-			print("selection is {}".format(selection))
+			print("selection is {}".format(selection)) # handling of user entries as ints but not available in the menu
+			if int(selection) not in list_options:
+				continue
+			if int(selection) in list_options:
+				if int(selection) == 1:
+					new_entry()
+				elif int(selection) == 2:
+					edit_info()
+				elif int(selection) == 3:
+					view_person()
+				elif int(selection) == 4:
+					quit_program()
 
-		except ValueError:
+		except ValueError:  # handling of user entries other than integers
 			clear()
 			print("You've selected an incorrect option\n")
 			continue
 		else:
 			break
-		if int(selection) in list_options:
-			if int(selection) == 1:
-				new_entry()
-			elif int(selection) == 2:
-				edit_info()
-			elif int(selection) == 3:
-				view_person()
 
-			# main()
+
 
 
 if __name__=="__main__":
