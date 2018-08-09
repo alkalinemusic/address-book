@@ -2,6 +2,13 @@
 Create an address book that holds names, address, phone #'s', email, etc...
 '''
 
+# Imports
+import os
+
+
+
+clear = lambda: os.system('cls') # call this using clear()
+
 class Person():
 
 
@@ -31,7 +38,7 @@ class Person():
 
 
 def new_entry():
-	print("\n You selected create an entry")
+	print("\nYou selected create an entry")
 
 '''
 develop the menu
@@ -42,7 +49,7 @@ Create a new entry menu:
 '''
 
 def edit_info():
-	print("\n You selected edit an entry")
+	print("\nYou selected edit an entry")
 
 '''
 Update person's info menu:
@@ -54,7 +61,7 @@ Update person's info menu:
 '''
 
 def view_person():
-	print("\n You selected View an entry")
+	print("\nYou selected View an entry")
 
 '''
 View person's info menu:
@@ -66,6 +73,9 @@ View person's info menu:
 # 
 
 def main():
+	list_options = [1, 2, 3]
+	selection = 0
+	clear()
 	print("Address Book")
 	print("\n")
 	print("Please select an option from the following menu\n")
@@ -74,16 +84,22 @@ def main():
 	print("2. Edit an existing entry")
 	print("3. View an entry")
 	print("--------------------\n")
-	selection = int(input(">> "))
-	if selection == 1:
-		new_entry()
-	elif selection == 2:
-		edit_info()
-	elif selection == 3:
-		view_person()
-	else:
-		print("You've selected an incorrect option")
+	selection = input(">> ")
+
+	while not selection.isdigit():
 		main()
+	if int(selection) in list_options:
+		if int(selection) == 1:
+			new_entry()
+		elif int(selection) == 2:
+			edit_info()
+		elif int(selection) == 3:
+			view_person()
+	else:
+		clear()
+		print("You've selected an incorrect option\n")
+		main()
+
 
 if __name__=="__main__":
 	main()
