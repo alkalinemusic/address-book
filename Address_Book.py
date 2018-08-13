@@ -11,30 +11,46 @@ clear = lambda: os.system('cls') # call this using clear()
 
 class Person():
 
+	person_id = 0
 
 	def __init__(self):
-		self.name = []
+		self.first_name = []
+		self.last_name = []
 		self.address = []
 		self.cellPhone = []
 		self.busPhone = []
 		self.email = []
 
-	def name_entry(self):
-		self.name_entry = input("Enter your name: ")
+		Person.person_id += 1
+
+	def first_name(self, first):
+		self.first_name = input("Enter the first name: ")
+		return first_name
+
+	def last_name(self):
+		self.last_name = input("Enter the last name: ")
+		return last_name
+
+	def full_name(self):
+		return '{} {}'.format(self.first_name, last_name)
 
 	def address_entry(self):
-		self.address_entry = input("Enter the address for {}: ".format(self.name_entry))
+		self.address_entry = input("Enter the address for {}: ".format(self.full_name))
+		return address_entry
 
 	def cell_phone_entry(self):
-		self.cell_phone_entry = input("Enter the cell phone number for {}: ".format(self.name_entry))
+		self.cell_phone_entry = input("Enter the cell phone number for {}: ".format(self.full_name))
+		return cell_phone_entry
 
 	def business_phone_entry(self):
-		self.business_phone_entry = input("Enter the business phone number for {}: ".format(self.name_entry))
+		self.business_phone_entry = input("Enter the business phone number for {}: ".format(self.full_name))
+		return business_phone_entry
 
 	def email_entry(self):
-		self.email_entry = input("Enter the email address for {}: ".format(self.name_entry))
+		self.email_entry = input("Enter the email address for {}: ".format(self.full_name))
+		return email_entry
 
-
+	
 
 
 def new_entry():
@@ -114,17 +130,20 @@ def main():
 
 
 
-if __name__=="__main__":
-	main()
+# if __name__=="__main__":
+# 	main()
+
+
+
 
 #initial debugging 
 # person01 = Person()
-# person01.name_entry()
+# person01.full_name()
 # person01.address_entry()
 # person01.cell_phone_entry()
 # person01.business_phone_entry()
 # person01.email_entry()
-# print(person01.name_entry + "\n")
+# print(person01.full_name + "\n")
 # print(person01.address_entry + "\n")
 # print(person01.cell_phone_entry + "\n")
 # print(person01.business_phone_entry + "\n")
