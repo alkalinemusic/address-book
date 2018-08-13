@@ -4,6 +4,7 @@ Create an address book that holds names, address, phone #'s', email, etc...
 
 # Imports
 import os
+import time
 
 
 
@@ -21,39 +22,41 @@ class Person():
 		self.busPhone = busPhone
 		self.email = email
 
-		Person.person_id += 1
+		Person.person_id += 1 # when calling this below to create the person's ID #, use (Person.person_id)
 
 	def full_name(self):
-		return '{} {}'.format(self.first_name, last_name)
+		return '{} {}'.format(self.first_name, last_name) #creating a full name
 
 	
-def first_name():
+def first_name(): # simple entry for first name
 	first_name = input("Enter the first name: ")
 	return first_name
 
-def last_name():
+def last_name(): # simple entry for last name
 	last_name = input("Enter the last name: ")
 	return last_name
 
-def address_entry():
+def address_entry(): # simple entry for address
 	address_entry = input("Enter the address: ")
 	return address_entry
 
-def cell_phone_entry():
+def cell_phone_entry(): # simple entry for cell phone
 	cell_phone_entry = input("Enter the cell phone number: ")
 	return cell_phone_entry
 
-def business_phone_entry():
+def business_phone_entry(): # simple entry for business phone
 	business_phone_entry = input("Enter the business phone number: ")
 	return business_phone_entry
 
-def email_entry():
+def email_entry(): # simple entry for email
 	email_entry = input("Enter the email address: ")
 	return email_entry
 
+''' this function prompts for all the new entry fields, all calling individual functions
+	then creating the new Person instance from the Person class
+'''
 def new_entry():
-	counter = 0
-	entry = ""
+
 	print("\nYou selected create an entry")
 	first = first_name()
 	last = last_name()
@@ -62,12 +65,13 @@ def new_entry():
 	business =business_phone_entry()
 	email = email_entry()
 
-	entry = "ID " + str(counter)
-	counter += 1
-	print("this entry is labelled {}".format(entry))
+	print()
 	entry = Person(first, last, address, cell, business, email)
+	unique_ID = Person.person_id
 	print(entry.email)
-
+	print()
+	print(first + "'s ID number is " + str(unique_ID))
+	time.sleep(5)
 	main()
 
 '''
