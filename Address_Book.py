@@ -13,7 +13,7 @@ class Person():
 
 	person_id = 0
 
-	def __init__(self):
+	def __init__(self, first_name, last_name, address, cellPhone, busPhone, email):
 		self.first_name = first_name
 		self.last_name = last_name
 		self.address = address
@@ -55,17 +55,20 @@ def new_entry():
 	counter = 0
 	entry = ""
 	print("\nYou selected create an entry")
-	first_name()
-	last_name()
-	address_entry()
-	cell_phone_entry()
-	business_phone_entry()
-	email_entry()
+	first = first_name()
+	last = last_name()
+	address = address_entry()
+	cell = cell_phone_entry()
+	business =business_phone_entry()
+	email = email_entry()
 
 	entry = "ID " + str(counter)
 	counter += 1
 	print("this entry is labelled {}".format(entry))
-	
+	entry = Person(first, last, address, cell, business, email)
+	print(entry.email)
+
+	main()
 
 '''
 develop the menu
