@@ -14,47 +14,58 @@ class Person():
 	person_id = 0
 
 	def __init__(self):
-		self.first_name = []
-		self.last_name = []
-		self.address = []
-		self.cellPhone = []
-		self.busPhone = []
-		self.email = []
+		self.first_name = first_name
+		self.last_name = last_name
+		self.address = address
+		self.cellPhone = cellPhone
+		self.busPhone = busPhone
+		self.email = email
 
 		Person.person_id += 1
-
-	def first_name(self, first):
-		self.first_name = input("Enter the first name: ")
-		return first_name
-
-	def last_name(self):
-		self.last_name = input("Enter the last name: ")
-		return last_name
 
 	def full_name(self):
 		return '{} {}'.format(self.first_name, last_name)
 
-	def address_entry(self):
-		self.address_entry = input("Enter the address for {}: ".format(self.full_name))
-		return address_entry
-
-	def cell_phone_entry(self):
-		self.cell_phone_entry = input("Enter the cell phone number for {}: ".format(self.full_name))
-		return cell_phone_entry
-
-	def business_phone_entry(self):
-		self.business_phone_entry = input("Enter the business phone number for {}: ".format(self.full_name))
-		return business_phone_entry
-
-	def email_entry(self):
-		self.email_entry = input("Enter the email address for {}: ".format(self.full_name))
-		return email_entry
-
 	
+def first_name():
+	first_name = input("Enter the first name: ")
+	return first_name
 
+def last_name():
+	last_name = input("Enter the last name: ")
+	return last_name
+
+def address_entry():
+	address_entry = input("Enter the address: ")
+	return address_entry
+
+def cell_phone_entry():
+	cell_phone_entry = input("Enter the cell phone number: ")
+	return cell_phone_entry
+
+def business_phone_entry():
+	business_phone_entry = input("Enter the business phone number: ")
+	return business_phone_entry
+
+def email_entry():
+	email_entry = input("Enter the email address: ")
+	return email_entry
 
 def new_entry():
+	counter = 0
+	entry = ""
 	print("\nYou selected create an entry")
+	first_name()
+	last_name()
+	address_entry()
+	cell_phone_entry()
+	business_phone_entry()
+	email_entry()
+
+	entry = "ID " + str(counter)
+	counter += 1
+	print("this entry is labelled {}".format(entry))
+	
 
 '''
 develop the menu
@@ -78,6 +89,8 @@ Update person's info menu:
 
 def view_person():
 	print("\nYou selected View an entry")
+	view_selection = print("Enter last name of entry you'd like to view: ")
+
 
 '''
 View person's info menu:
@@ -130,8 +143,8 @@ def main():
 
 
 
-# if __name__=="__main__":
-# 	main()
+if __name__=="__main__":
+	main()
 
 
 
