@@ -68,22 +68,48 @@ def new_entry():
 	print()
 	entry = Person(first, last, address, cell, business, email)
 	unique_ID = Person.person_id
-	print(entry.email)
-	print()
-	print(first + "'s ID number is " + str(unique_ID))
-	time.sleep(5)
-	main()
+	print(entry.email) # Debug line
+	print() # Debug line
+	print(first + "'s ID number is " + str(unique_ID)) # Debug line
+	time.sleep(5) # Debug line
+	main() # returns to the main menu function
 
 '''
 develop the menu
 Menu options:
 Create a new entry menu: 
+give the user multiple ways to search for the entry they'd like to edit
 1.this will pull up all entry options
 2.update an entry's information: ****this will need to open up a new menu with all the entries as options
 '''
 
 def edit_info():
-	print("\nYou selected edit an entry")
+	edit_list_options = [1, 2, 3, 4, 5, 6]
+	print("\nYou selected edit an entry\n") # debug line
+	while True:
+		try:
+			clear()
+			print("How would you like to search for the entry you'd like to edit?\n")
+			print("--------------------")
+			print("1. First name")
+			print("2. Last name")
+			print("3. Address")
+			print("4. Cell Phone #")
+			print("5. Business Phone #")
+			print("6. Email")
+			print("--------------------")
+			search_entry = int(input(">> "))
+			print()
+			print("Selection is {}".format(selection))
+			if int(search_entry) not in edit_list_options:
+				continue
+			if int(search_entry) in edit_list_options:
+				pass   # pick this up for later
+
+
+
+	time.sleep(5)
+	main()
 
 '''
 Update person's info menu:
@@ -97,6 +123,10 @@ Update person's info menu:
 def view_person():
 	print("\nYou selected View an entry")
 	view_selection = print("Enter last name of entry you'd like to view: ")
+
+
+	time.sleep(5)
+	main()
 
 
 '''
@@ -127,7 +157,7 @@ def main():
 			print("4. Quit program")
 			print("--------------------\n")
 			selection = int(input(">> "))
-			print("selection is {}".format(selection)) # handling of user entries as ints but not available in the menu
+			print("selection is {}".format(selection)) # Debug handling of user entries as ints but not available in the menu
 			if int(selection) not in list_options:
 				continue
 			if int(selection) in list_options:
