@@ -5,6 +5,33 @@ Create an address book that holds names, address, phone #'s', email, etc...
 # Imports
 import os
 import time
+import csv
+
+def checkFilePath():
+	file_path = os.path.join(os.path.expanduser('~'),"Your_Address_Book.csv")
+	if os.path.isfile(file_path) == False:
+		print("This file does not exist") # debug line
+		time.sleep(5) # debug line
+		with open(os.path.join(os.path.expanduser('~'),"Your_Address_Book.csv"), "a") as csvFile:
+			file_writer = csv.writer(csvFile, delimiter=",",
+								quotechar="|", quoting=csv.QUOTE_MINIMAL)
+			file_writer.writerow(['ID', 'First', 'Last', 'Address', 'Cell Phone', 'Business Phone', 'Email'])	
+
+
+	else:
+	
+		print("File already exists!!!!!!!!!!!!!!!!!!!!!!!!!!!!!") # debug line
+		time.sleep(5) # Debug line
+		main()
+
+
+
+
+# with open(os.path.join(os.path.expanduser('~'),"Your_Address_Book.csv"), "a") as csvFile:
+# 	file_writer = csv.writer(csvFile, delimiter=",",
+# 						quotechar="|", quoting=csv.QUOTE_MINIMAL)
+# 	file_writer.writerow(['ID', 'First', 'Last', 'Address', 'Cell Phone', 'Business Phone', 'Email'])
+
 
 
 
@@ -23,6 +50,7 @@ class Person(): # Person class
 		self.email = email
 
 		Person.person_id += 1 # when calling this below to create the person's ID #, use (Person.person_id)
+		unique_ID = Person.person_id
 
 	def full_name(self):
 		return '{} {}'.format(self.first_name, last_name) #creating a full name
@@ -52,10 +80,18 @@ def email_entry(): # simple entry for email
 	email_entry = input("Enter the email address: ")
 	return email_entry
 
+def create_csv_entry(): # creating the csv entry for this instance
+	with open(os.path.join(os.path.expanduser('~'),"Your_Address_Book.csv"), "a") as csvFile:
+		file_writer = csv.writer(csvFile, delimiter = ' ',
+								  quotechar="|", quoting=csv.QUOTE_MINIMAL)
+		file_writer.writerow([Person.name])
+
 ''' this function prompts for all the new entry fields, all calling individual functions
 	then creating the new Person instance from the Person class
 '''
 def new_entry():
+ 	
+
 
 	print("\nYou selected create an entry")
 	first = first_name()
@@ -71,6 +107,7 @@ def new_entry():
 	print(entry.email) # Debug line
 	print() # Debug line
 	print(first + "'s ID number is " + str(unique_ID)) # Debug line
+	create_csv_entry()
 	time.sleep(5) # Debug line
 	main() # returns to the main menu function
 
@@ -207,6 +244,7 @@ def main():
 
 
 if __name__=="__main__":
+	checkFilePath()
 	main()
 
 
