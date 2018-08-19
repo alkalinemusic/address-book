@@ -21,7 +21,7 @@ def checkFilePath():
 	else:
 	
 		print("File already exists!!!!!!!!!!!!!!!!!!!!!!!!!!!!!") # debug line
-		time.sleep(5) # Debug line
+		time.sleep(2) # Debug line
 		main()
 
 
@@ -51,6 +51,8 @@ class Person(): # Person class
 
 		Person.person_id += 1 # when calling this below to create the person's ID #, use (Person.person_id)
 		unique_ID = Person.person_id
+		full_entry = ""
+		full_entry += str(unique_ID)
 
 	def full_name(self):
 		return '{} {}'.format(self.first_name, last_name) #creating a full name
@@ -84,14 +86,20 @@ def create_csv_entry(): # creating the csv entry for this instance
 	with open(os.path.join(os.path.expanduser('~'),"Your_Address_Book.csv"), "a") as csvFile:
 		file_writer = csv.writer(csvFile, delimiter = ' ',
 								  quotechar="|", quoting=csv.QUOTE_MINIMAL)
-		file_writer.writerow([Person.name])
+		file_writer.writerow([full_entry.first_name, Person.last_name, Person.address, Person.cellPhone,
+							  Person.busPhone, Person.email])
+
+		'''
+		work on the above section, how to call class instances that were just created 
+		by the create_new_entry function
+		'''
 
 ''' this function prompts for all the new entry fields, all calling individual functions
 	then creating the new Person instance from the Person class
 '''
 def new_entry():
  	
-
+	unique_ID = Person.person_id
 
 	print("\nYou selected create an entry")
 	first = first_name()
@@ -103,7 +111,8 @@ def new_entry():
 
 	print()
 	entry = Person(first, last, address, cell, business, email)
-	unique_ID = Person.person_id
+	
+
 	print(entry.email) # Debug line
 	print() # Debug line
 	print(first + "'s ID number is " + str(unique_ID)) # Debug line
