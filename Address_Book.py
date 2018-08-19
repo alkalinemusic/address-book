@@ -10,9 +10,9 @@ import time
 
 clear = lambda: os.system('cls') # call this using clear()
 
-class Person():
+class Person(): # Person class
 
-	person_id = 0
+	person_id = 0 # This is the initializaion of the counter that will give each new entry a Unique ID
 
 	def __init__(self, first_name, last_name, address, cellPhone, busPhone, email):
 		self.first_name = first_name
@@ -100,19 +100,21 @@ def edit_info():
 			print("--------------------")
 			search_entry = int(input(">> "))
 			print()
-			print("Selection is {}".format(selection))
+			print("Selection is {}".format(search_entry)) # Debug line
 			if int(search_entry) not in edit_list_options:
 				continue
 			if int(search_entry) in edit_list_options:
 				pass   # pick this up for later
+		except ValueError:  # handling of user entries other than integers
+			clear()
+			print("You've selected an incorrect option\n")
+			continue
+		else:
+			break
+		# time.sleep(5)
+		# main()
 
-
-
-	time.sleep(5)
-	main()
-
-'''
-Update person's info menu:
+'''Update person's info menu:
 1. name
 2. address
 3. cell phone
@@ -121,12 +123,36 @@ Update person's info menu:
 '''
 
 def view_person():
-	print("\nYou selected View an entry")
-	view_selection = print("Enter last name of entry you'd like to view: ")
+	view_list_options = [1, 2, 3, 4, 5, 6]
+	clear()
+	print("\nYou selected View an entry\n")
+	while True: 
+		try:
+			print("How would you like to search for the listing you wish to view?\n")
+			print("--------------------")
+			print("1. First name")
+			print("2. Last name")
+			print("3. Address")
+			print("4. Cell Phone #")
+			print("5. Business Phone #")
+			print("6. Email")
+			print("--------------------\n")
+			view_selection = int(input(">> "))
+			print()	
+			print("You selected {}".format(view_selection))
+			if int(view_selection) not in view_list_options:
+				continue
+			if int(view_selection) in view_list_options:
+				pass
+		except ValueError:
+			clear()
+			print("You entered an incorrect option\n")
+			continue
+		else:
+			break
 
-
-	time.sleep(5)
-	main()
+		time.sleep(5)
+		main()
 
 
 '''
