@@ -82,19 +82,20 @@ def email_entry(): # simple entry for email
 	email_entry = input("Enter the email address: ")
 	return email_entry
 
-def create_csv_entry(): # creating the csv entry for this instance
-	with open(os.path.join(os.path.expanduser('~'),"Your_Address_Book.csv"), "a") as csvFile:
-		file_writer = csv.writer(csvFile, delimiter = ' ',
-								  quotechar="|", quoting=csv.QUOTE_MINIMAL)
-		file_writer.writerow([full_entry.first_name, Person.last_name, Person.address, Person.cellPhone,
-							  Person.busPhone, Person.email])
+# def create_csv_entry(): # creating the csv entry for this instance
+# 	with open(os.path.join(os.path.expanduser('~'),"Your_Address_Book.csv"), "a") as csvFile:
+# 		file_writer = csv.writer(csvFile, delimiter = ' ',
+# 								  quotechar="|", quoting=csv.QUOTE_MINIMAL)
+# 		file_writer.writerow([entry.first_name, entry.last_name, entry.address, entry.cellPhone,
+# 							  entry.busPhone, entry.email])
 
-		'''
-		work on the above section, how to call class instances that were just created 
-		by the create_new_entry function
-		'''
+'''
+work on the above section, how to call class instances that were just created 
+by the create_new_entry function
+'''
 
-''' this function prompts for all the new entry fields, all calling individual functions
+''' 
+	this function prompts for all the new entry fields, all calling individual functions
 	then creating the new Person instance from the Person class
 '''
 def new_entry():
@@ -116,7 +117,13 @@ def new_entry():
 	print(entry.email) # Debug line
 	print() # Debug line
 	print(first + "'s ID number is " + str(unique_ID)) # Debug line
-	create_csv_entry()
+# open the csv file and write the data for the current entry to it
+	with open(os.path.join(os.path.expanduser('~'),"Your_Address_Book.csv"), "a") as csvFile:
+		file_writer = csv.writer(csvFile, delimiter = ' ',
+								  quotechar="|", quoting=csv.QUOTE_MINIMAL)
+		file_writer.writerow([entry.first_name, entry.last_name, entry.address, entry.cellPhone,
+							  entry.busPhone, entry.email])
+	# create_csv_entry()
 	time.sleep(5) # Debug line
 	main() # returns to the main menu function
 
