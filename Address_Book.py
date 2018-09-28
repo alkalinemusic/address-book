@@ -181,7 +181,7 @@ def view_person():
 	print("\nYou selected View an entry\n")
 	while True: 
 		try:
-			print("How would you like to search for the listing you wish to view?\n")
+			print("How would you like to search for the entry you wish to view?\n")
 			print("--------------------")
 			print("1. First name")
 			print("2. Last name")
@@ -193,9 +193,35 @@ def view_person():
 			view_selection = int(input(">> "))
 			print()	
 			print("You selected {}".format(view_selection))
+			time.sleep(2)
+			clear()
 			if int(view_selection) not in view_list_options:
 				continue
 			if int(view_selection) in view_list_options:
+				if view_selection == 1:
+					first = first_name()
+					print('You entered: %s' % first) # debug line - remove
+					time.sleep(2) # debug line - remove
+				elif view_selection == 2:
+					last = last_name()
+					print('You entered: %s' % last) # debug line - remove
+					time.sleep(2) # debug line - remove
+				elif view_selection == 3:
+					address = address_entry()
+					print('You entered: %s' % address) # debug line - remove
+					time.sleep(2) # debug line - remove
+				elif view_selection == 4:
+					cell = cell_phone_entry()
+					print('You entered: %s' % cell) # debug line - remove
+					time.sleep(2) # debug line - remove
+				elif view_selection == 5:
+					business = business_phone_entry()
+					print('You entered: %s' % business) # debug line - remove
+					time.sleep(2) # debug line - remove
+				elif view_selection == 6:
+					email = email_entry()
+					print('You entered: %s' % email) # debug line - remove
+					time.sleep(2) # debug line - remove
 				pass
 		except ValueError:
 			clear()
