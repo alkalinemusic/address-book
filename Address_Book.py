@@ -15,7 +15,7 @@ def checkFilePath():
 		with open(os.path.join(os.path.expanduser('~'),"Your_Address_Book.csv"), "a") as csvFile:
 			file_writer = csv.writer(csvFile, delimiter=",",
 								quotechar="|", quoting=csv.QUOTE_MINIMAL)
-			file_writer.writerow(['ID', 'First', 'Last', 'Address', 'Cell Phone', 'Business Phone', 'Email'])	
+			file_writer.writerow(['First', 'Last', 'Address', 'Cell Phone', 'Business Phone', 'Email'])	
 
 
 	else:
@@ -122,8 +122,8 @@ def new_entry():
 	print(first + "'s ID number is " + str(unique_ID)) # Debug line
 # open the csv file and write the data for the current entry to it
 	with open(os.path.join(os.path.expanduser('~'),"Your_Address_Book.csv"), "a") as csvFile:
-		file_writer = csv.writer(csvFile, delimiter = ' ',
-								  quotechar="|", quoting=csv.QUOTE_MINIMAL)
+		file_writer = csv.writer(csvFile, delimiter = ',',
+								  quotechar='"', quoting=csv.QUOTE_MINIMAL)
 		file_writer.writerow([entry.first_name, entry.last_name, entry.address, entry.cellPhone,
 							  entry.busPhone, entry.email])
 	# create_csv_entry()
