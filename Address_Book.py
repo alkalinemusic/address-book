@@ -146,15 +146,15 @@ def edit_info():
 	while True:
 		try:
 			clear()
-			print("How would you like to search for the entry you'd like to edit?\n")
-			print("--------------------")
-			print("1. First name")
-			print("2. Last name")
-			print("3. Address")
-			print("4. Cell Phone #")
-			print("5. Business Phone #")
-			print("6. Email")
-			print("--------------------")
+			print(" How would you like to search for the entry you'd like to edit?\n")
+			print(" --------------------")
+			print(" 1. First name")
+			print(" 2. Last name")
+			print(" 3. Address")
+			print(" 4. Cell Phone #")
+			print(" 5. Business Phone #")
+			print(" 6. Email")
+			print(" --------------------")
 			search_entry = int(input(">> "))
 			print()
 			print("Selection is {}".format(search_entry)) # Debug line
@@ -186,16 +186,16 @@ def view_person():
 	print("\nYou selected View an entry\n")
 	while True: 
 		try:
-			print("How would you like to search for the entry you wish to view?\n")
-			print("--------------------")
-			print("1. First name")
-			print("2. Last name")
-			print("3. Address")
-			print("4. Cell Phone #")
-			print("5. Business Phone #")
-			print("6. Email")
-			print("7. Quit Program")
-			print("--------------------\n")
+			print(" How would you like to search for the entry you wish to view?\n")
+			print(" --------------------")
+			print(" 1. First name")
+			print(" 2. Last name")
+			print(" 3. Address")
+			print(" 4. Cell Phone #")
+			print(" 5. Business Phone #")
+			print(" 6. Email")
+			print(" 7. Quit Program")
+			print(" --------------------\n")
 			view_selection = int(input(">> "))
 			print()	
 			print("You selected {}".format(view_selection))
@@ -248,17 +248,26 @@ def view_person():
 		main()
 
 '''
-View entry function
-will open csv file and search the file for the user's preferred choice of search. i.e. first name, last name, phone, etc
+search_entry_missing function handles any user entry from the view_person function that is not found 
+in the view_entry_search function. Flow is then redirected back to the view_person function to try again
 
-
+this seems to be triggered by the view_entry_search funtion if I put it in as an else statement
+need to figure out how to handle for the wrongly entered entries
 '''
+
 def search_entry_missing():
 	clear()
 	print('\nThat entry does not appear to exist in the address book.\n' \
 		  'Please check your spelling. Remember capitalization counts.')
 	time.sleep(5)
 	view_person()
+
+'''
+View entry function
+will open csv file and search the file for the user's preferred choice of search. i.e. first name, last name, phone, etc
+if the entry from view_person function is not found in the DB search, flow is redirected to the search_entry_missing function
+
+'''
 
 def view_entry_search(entry_choice):
 	
@@ -271,8 +280,6 @@ def view_entry_search(entry_choice):
 	                 '%-20s | %-20s | %-35s' \
 	                      % (row[0], row[1], row[2], row[3], row[4], row[5])) # FIXME: need to re-format how this reads
 	                time.sleep(5) # Debug line, may need to change or put in condition to let user leave the printed line
-	    else:
-	    	search_entry_missing()
 
 
 	main()
@@ -294,15 +301,15 @@ def main():
 	while True:
 		try:
 			clear()
-			print("Address Book")
-			print("\n")
-			print("Please select an option from the following menu\n")
-			print("--------------------")
-			print("1. Create a new entry")
-			print("2. Edit an existing entry")
-			print("3. View an entry")
-			print("4. Quit program")
-			print("--------------------\n")
+			print(" Address Book")
+			print(" \n")
+			print(" Please select an option from the following menu\n")
+			print(" --------------------")
+			print(" 1. Create a new entry")
+			print(" 2. Edit an existing entry")
+			print(" 3. View an entry")
+			print(" 4. Quit program")
+			print(" --------------------\n")
 			selection = int(input(">> "))
 			print("selection is {}".format(selection)) # Debug handling of user entries as ints but not available in the menu
 			if int(selection) not in list_options:
