@@ -181,7 +181,7 @@ View person's info menu:
 
 
 def view_person():
-	view_list_options = [1, 2, 3, 4, 5, 6]
+	view_list_options = [1, 2, 3, 4, 5, 6, 7]
 	clear()
 	print("\nYou selected View an entry\n")
 	while True: 
@@ -194,6 +194,7 @@ def view_person():
 			print("4. Cell Phone #")
 			print("5. Business Phone #")
 			print("6. Email")
+			print("7. Quit Program")
 			print("--------------------\n")
 			view_selection = int(input(">> "))
 			print()	
@@ -233,6 +234,8 @@ def view_person():
 					print('You entered: %s' % email) # debug line - remove
 					time.sleep(2) # debug line - remove
 					view_entry_search(email)
+				elif view_selection == 7:
+					quit_program()
 				pass
 		except ValueError:
 			clear()
@@ -250,6 +253,13 @@ will open csv file and search the file for the user's preferred choice of search
 
 
 '''
+def search_entry_missing():
+	clear()
+	print('\nThat entry does not appear to exist in the address book.\n' \
+		  'Please check your spelling. Remember capitalization counts.')
+	time.sleep(5)
+	view_person()
+
 def view_entry_search(entry_choice):
 	
 	with open("C:\\Users\\ashep\\Your_Address_Book.csv", "r") as csv_file:
@@ -257,9 +267,14 @@ def view_entry_search(entry_choice):
 	    for row in csv_file_reader:
 	        for field in row:
 	            if field == entry_choice:
-	                print('%s %s lives at %s. Cell phone is %s, Work phone is %s, and email is %s' \
+	                print('%-20s | %-20s | %-50s \n' \
+	                 '%-20s | %-20s | %-35s' \
 	                      % (row[0], row[1], row[2], row[3], row[4], row[5])) # FIXME: need to re-format how this reads
 	                time.sleep(5) # Debug line, may need to change or put in condition to let user leave the printed line
+	    else:
+	    	search_entry_missing()
+
+
 	main()
 
 
@@ -315,19 +330,3 @@ def main():
 if __name__=="__main__":
 	checkFilePath()
 	main()
-
-
-
-
-#initial debugging 
-# person01 = Person()
-# person01.full_name()
-# person01.address_entry()
-# person01.cell_phone_entry()
-# person01.business_phone_entry()
-# person01.email_entry()
-# print(person01.full_name + "\n")
-# print(person01.address_entry + "\n")
-# print(person01.cell_phone_entry + "\n")
-# print(person01.business_phone_entry + "\n")
-# print(person01.email_entry + "\n")
