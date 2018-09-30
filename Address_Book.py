@@ -207,26 +207,32 @@ def view_person():
 					first = first_name()
 					print('You entered: %s' % first) # debug line - remove
 					time.sleep(2) # debug line - remove
+					view_entry_search(first)
 				elif view_selection == 2:
 					last = last_name()
 					print('You entered: %s' % last) # debug line - remove
 					time.sleep(2) # debug line - remove
+					view_entry_search(last)
 				elif view_selection == 3:
 					address = address_entry()
 					print('You entered: %s' % address) # debug line - remove
 					time.sleep(2) # debug line - remove
+					view_entry_search(address)
 				elif view_selection == 4:
 					cell = cell_phone_entry()
 					print('You entered: %s' % cell) # debug line - remove
 					time.sleep(2) # debug line - remove
+					view_entry_search(cell)
 				elif view_selection == 5:
 					business = business_phone_entry()
 					print('You entered: %s' % business) # debug line - remove
 					time.sleep(2) # debug line - remove
+					view_entry_search(business)
 				elif view_selection == 6:
 					email = email_entry()
 					print('You entered: %s' % email) # debug line - remove
 					time.sleep(2) # debug line - remove
+					view_entry_search(email)
 				pass
 		except ValueError:
 			clear()
@@ -237,6 +243,28 @@ def view_person():
 
 		time.sleep(5)
 		main()
+
+'''
+View entry function
+will open csv file and search the file for the user's preferred choice of search. i.e. first name, last name, phone, etc
+
+
+'''
+def view_entry_search(entry_choice):
+	
+	with open("C:\\Users\\ashep\\Your_Address_Book.csv", "r") as csv_file:
+	    csv_file_reader = csv.reader(csv_file)
+	    for row in csv_file_reader:
+	        for field in row:
+	            if field == entry_choice:
+	                print('%s %s lives at %s. Cell phone is %s, Work phone is %s, and email is %s' \
+	                      % (row[0], row[1], row[2], row[3], row[4], row[5])) # FIXME: need to re-format how this reads
+	                time.sleep(5) # Debug line, may need to change or put in condition to let user leave the printed line
+	main()
+
+
+
+
 
 
 
