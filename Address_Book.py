@@ -39,7 +39,7 @@ clear = lambda: os.system('cls') # call this using clear()
 
 class Person(): # Person class
 
-	person_id = 0 # This is the initializaion of the counter that will give each new entry a Unique ID
+	# person_id = 0 # This is the initializaion of the counter that will give each new entry a Unique ID FIXME will probably be taken out, no ID # needed
 
 	def __init__(self, first_name, last_name, address, cellPhone, busPhone, email):
 		self.first_name = first_name
@@ -49,10 +49,10 @@ class Person(): # Person class
 		self.busPhone = busPhone
 		self.email = email
 
-		Person.person_id += 1 # when calling this below to create the person's ID #, use (Person.person_id)
-		unique_ID = Person.person_id
-		full_entry = ""
-		full_entry += str(unique_ID)
+		# Person.person_id += 1 # when calling this below to create the person's ID #, use (Person.person_id) FIXME removing ID from entire program
+		# unique_ID = Person.person_ # FIXME probably taking out the ID from the program
+		# full_entry = ""
+		# full_entry += str(unique_ID) # FIXME probably taking out the ID from the program
 
 	def full_name(self):
 		return '{} {}'.format(self.first_name, last_name) #creating a full name
@@ -103,7 +103,7 @@ give the user multiple ways to search for the entry they'd like to edit
 '''
 def new_entry():
  	
-	unique_ID = Person.person_id
+	# unique_ID = Person.person_id  #FIXME probably removing ID from the program
 
 	print("\nYou selected create an entry")
 	first = first_name()
@@ -119,7 +119,7 @@ def new_entry():
 
 	print(entry.email) # Debug line
 	print() # Debug line
-	print(first + "'s ID number is " + str(unique_ID)) # Debug line
+	# print(first + "'s ID number is " + str(unique_ID)) # Debug line FIXME: This ID number will most likely be taken out
 # open the csv file and write the data for the current entry to it
 	with open(os.path.join(os.path.expanduser('~'),"Your_Address_Book.csv"), "a") as csvFile:
 		file_writer = csv.writer(csvFile, delimiter = ',',
