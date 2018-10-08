@@ -316,7 +316,14 @@ def view_entry_search(entry_choice):
 
 	main()
 
+'''
+Edit entry function
+will open csv file and search the file for the entry choice of search(first, last, etc.)
+Function will then print out the matching entry and ask user to confirm. 
+Once confirmed, will need to build a menu to ask what specifically they'd like to edit.
+This will continue until all desired entries are edited.
 
+'''
 
 
 
