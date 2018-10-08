@@ -154,6 +154,7 @@ def edit_info():
 			print(" 4. Cell Phone #")
 			print(" 5. Business Phone #")
 			print(" 6. Email")
+			print(" 7. Quit program")
 			print(" --------------------")
 			search_entry = int(input(">> "))
 			print()
@@ -161,7 +162,38 @@ def edit_info():
 			if int(search_entry) not in edit_list_options:
 				continue
 			if int(search_entry) in edit_list_options:
-				pass   # pick this up for later
+				if search_entry == 1:
+					first = first_name()
+					print('You entered: %s' % first) # debug line - remove
+					time.sleep(2) # debug line - remove
+					# FIXME: call function to edit existing entry
+				if search_entry == 2:
+					last = last_name()
+					print('You entered: %s' % last)
+					time.sleep(2) # debug line - remove
+					#FIXME:
+				if search_entry == 3:
+					address = address_entry()
+					print('You entered: %s' % address)
+					time.sleep(2) # debug line - remove
+					#FIXME:
+				if search_entry == 4:
+					cell = cell_phone_entry()
+					print('You entered: %s' % cell)
+					time.sleep(2) # debug line - remove
+					#FIXME:
+				if search_entry == 5:
+					business = business_phone_entry()
+					print('You entered: %s' % business) # debug line - remove
+					time.sleep(2) # debug line - remove
+					#FIXME:
+				if search_entry == 6:
+					email = email_entry()
+					print('You entered: %s' % email) # debug line - remove
+					time.sleep(2) # debug line - remove
+					#FIXME:
+				if search_entry == 7:
+					quit_program()
 		except ValueError:  # handling of user entries other than integers
 			clear()
 			print("You've selected an incorrect option\n")
